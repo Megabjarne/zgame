@@ -27,10 +27,6 @@ Room* Map::get_room(room_id roomid){
 	return nullptr;
 }
 
-Room* Map::get_player_room(){
-	return get_room(game.playerpos);
-}
-
 void Map::generate_map(){
 	rooms.push_back(new Room());
 	rooms.push_back(new Room());
@@ -38,6 +34,5 @@ void Map::generate_map(){
 	links.push_back(new Link(rooms[0]->id(), rooms[1]->id()));
 	links.push_back(new Link(rooms[1]->id(), rooms[2]->id()));
 	links.push_back(new Link(rooms[2]->id(), rooms[0]->id()));
-	game.playerpos = rooms[1]->id();
 }
 

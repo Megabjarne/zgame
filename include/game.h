@@ -2,12 +2,13 @@
 #define _game_h
 
 #include <map.h>
+#include <player.h>
 
 class Game {
 public:
 	
 	Map map;
-	room_id playerpos;
+	Player player;
 
 };
 extern Game game;

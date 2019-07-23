@@ -4,45 +4,28 @@
 #include <list>
 
 #include <graphics.h>
-
 #include <game.h>
-#include <room.h>
-#include <link.h>
 
 using std::string;
 using std::list;
 using std::cout;
 
-ncgui::box *guiroot;
-
-void setup_gui(){
-	// init ncurses
-	initscr();
-	noecho();
-	
-	// build initial gui stage
-	guiroot = new ncgui::box("root", "zgame");
-	guiroot->setelement(new ncgui::split("topsplit", ncgui::VERTICAL, ncgui::partsize(), ncgui::partsize(20)));
-	
-	guiroot->agetelement<ncgui::split>("topsplit")->setelement(0, new ncgui::textconsole("worldconsole"));
-	guiroot->agetelement<ncgui::split>("topsplit")->setelement(1, new ncgui::textconsole("rightshit"));
-	
-	guiroot->maximize();
-	guiroot->redraw();
-}
-
-void cleanup_gui(){
-	endwin();
-}
 
 int main(){
-	setup_gui();
+	init_graphics();
+	ncgui::textconsole *cons = guiroot->agetelement<ncgui::textconsole>("worldconsole");
+	cons->showprompt(true);
+	string prompt = " > ";
+	cons->setprompt(prompt);
+	for (int i=0; i<10; i++){
+		char c = cons->igetch();
+		cons->addline(string("read character '") + c + "'");
+		prompt += c;
+		cons->setprompt(prompt);
+	}
+	//usleep(5 * 1000000);
 	
-	Room* r = game.map.get_player_room();
-	r->describe();
-	usleep(10000000);
-	
-	cleanup_gui();
+	stop_graphics();
 	return 0;
 }
 

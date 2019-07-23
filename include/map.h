@@ -17,7 +17,6 @@ public:
 	Map();
 	std::list<Link*> exits(room_id roomid);
 	Room* get_room(room_id roomid);
-	Room* get_player_room();
 	
 	void generate_map();
 };

@@ -10,5 +10,8 @@
 
 extern ncgui::box *guiroot;
 
+void init_graphics();
+void stop_graphics();
+
 #endif
 
