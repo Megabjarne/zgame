@@ -6,8 +6,9 @@ void build_gui();
 ncgui::box *guiroot;
 
 void init_graphics(){
-	initscr();
-	noecho();
+	initscr(); // init ncurses
+	noecho(); // disable echoing of input
+	curs_set(0); // make cursor invisible
 	
 	build_gui();
 }
@@ -19,6 +20,8 @@ void build_gui(){
 	
 	guiroot->agetelement<ncgui::split>("topsplit")->setelement(0, new ncgui::textconsole("worldconsole"));
 	guiroot->agetelement<ncgui::split>("topsplit")->setelement(1, new ncgui::textconsole("rightshit"));
+	
+	guiroot->agetelement<ncgui::textconsole>("worldconsole")->showprompt(true);
 	
 	guiroot->maximize();
 	guiroot->redraw();

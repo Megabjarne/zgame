@@ -1,6 +1,6 @@
 
 CC = g++
-CFLAGS = -Iinclude -Wall
+CFLAGS = -Iinclude -Wall -std=c++11
 LIBS = -lncurses -lncgui
 
 headerfiles = $(wildcard include/*)
