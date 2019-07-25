@@ -30,16 +30,14 @@ list<Link*> Room::exits(){
 	return game.map.exits(this->id());
 }
 
-void Room::describe(){
-	ncgui::textconsole *console = guiroot->agetelement<ncgui::textconsole>("worldconsole");
-	string s = "The room has " + std::to_string(this->exits().size()) + " exits";
-	console->addline(s);
+string Room::describe(){
+	string s = "a room";
+	return s;
 }
 
-void Room::describe_detailed(){
-	ncgui::textconsole *console = guiroot->agetelement<ncgui::textconsole>("worldconsole");
+string Room::describe_detailed(){
 	list<Link*> exitlist = this->exits();
-	string s = "The room has " + std::to_string(exitlist.size()) + " exits; ";
+	string s = "a room with " + std::to_string(exitlist.size()) + " exits; ";
 	unsigned int n = 0;
 	for (auto e = exitlist.begin(); e != exitlist.end(); e++){
 		n++;
@@ -52,6 +50,6 @@ void Room::describe_detailed(){
 		}
 		s += string((*e)->stype()) + " leading " + (*e)->direction(this->id());
 	}
-	console->addline(s);
+	return s;
 }
 

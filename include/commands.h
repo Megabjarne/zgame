@@ -7,6 +7,8 @@
 
 #include <game.h>
 #include <room.h>
+#include <link.h>
+#include <util.h>
 
 class Command {
 protected:
@@ -26,6 +28,12 @@ public:
 };
 
 class Command_Exit : public Command{
+public:
+	std::list<std::string> completions(std::string partialcommand);
+	bool process(std::string command);
+};
+
+class Command_Move : public Command{
 public:
 	std::list<std::string> completions(std::string partialcommand);
 	bool process(std::string command);

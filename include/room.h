@@ -2,6 +2,7 @@
 #define room_h
 
 #include <list>
+#include <string>
 
 class Room;
 typedef unsigned int room_id;
@@ -20,8 +21,8 @@ public:
 	Pos pos();
 	std::list<Link*> exits();
 	
-	void describe();
-	void describe_detailed();
+	std::string describe();
+	std::string describe_detailed();
 };
 
 #endif

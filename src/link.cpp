@@ -48,10 +48,27 @@ string Link::direction(room_id fromroom){
 		return "west";
 	if (diff == Pos(0,-1))
 		return "north";
+		
+	if (diff == Pos(1,1))
+		return "southeast";
+	if (diff == Pos(-1,1))
+		return "southwest";
+	if (diff == Pos(1,-1))
+		return "northeast";
+	if (diff == Pos(-1,-1))
+		return "northwest";
 	return "";
 }
 
 string Link::stype(){
 	return linktype_to_string[this->_type];
+}
+
+Room* Link::opposite(room_id room){
+	if (room == room_1)
+		return this->room2();
+	if (room == room_2)
+		return this->room1();
+	return nullptr;
 }
 

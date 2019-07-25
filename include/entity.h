@@ -6,6 +6,7 @@
 typedef unsigned int entity_id;
 
 class Room;
+class Link;
 
 class Entity {
 private:
@@ -15,8 +16,9 @@ private:
 public:
 	Entity();
 	entity_id id();
-	Room *get_room();
-	void set_room(Room *new_room);
+	Room* room();
+	void move(Room *new_room);
+	bool move(Link *link);
 	
 	virtual void update() = 0;
 };

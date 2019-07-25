@@ -26,6 +26,7 @@ public:
 	std::string direction(Room *fromroom);
 	std::string direction(room_id fromroom);
 	std::string stype();
+	Room* opposite(room_id room);
 };
 
 #endif

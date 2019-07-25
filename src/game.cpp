@@ -9,6 +9,7 @@ Game game;
 Game::Game(){
 	commands.push_back(new Command_Look());
 	commands.push_back(new Command_Exit());
+	commands.push_back(new Command_Move());
 }
 
 void Game::run(){
@@ -76,7 +77,7 @@ void Game::process_input(){
 	// find command that fits
 	bool processed = false;
 	for (auto com = commands.begin(); com != commands.end(); com++){
-		if ((*com)->process(read)){
+		if ((*com)->process(trim(read))){
 			processed = true;
 			break;
 		}
