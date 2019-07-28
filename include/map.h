@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <list>
+#include <furniture.h>
 
 typedef unsigned int room_id;
 class Room;

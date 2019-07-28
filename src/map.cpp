@@ -28,11 +28,19 @@ Room* Map::get_room(room_id roomid){
 }
 
 void Map::generate_map(){
+	// add rooms
 	rooms.push_back(new Room(Pos(0,0)));
 	rooms.push_back(new Room(Pos(1,0)));
 	rooms.push_back(new Room(Pos(0,1)));
+	// add links
 	links.push_back(new Link(rooms[0]->id(), rooms[1]->id()));
 	links.push_back(new Link(rooms[1]->id(), rooms[2]->id()));
 	links.push_back(new Link(rooms[2]->id(), rooms[0]->id()));
+	// add furniture
+	rooms[0]->furniture.push_back(new Furniture(furniture_t::CHAIR));
+	rooms[1]->furniture.push_back(new Furniture(furniture_t::CHAIR));
+	rooms[1]->furniture.push_back(new Furniture(furniture_t::TABLE));
+	rooms[2]->furniture.push_back(new Furniture(furniture_t::CHAIR));
+	rooms[2]->furniture.push_back(new Furniture(furniture_t::WARDROBE));
 }
 

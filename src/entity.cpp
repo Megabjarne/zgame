@@ -6,8 +6,11 @@
 entity_id next_id = 1;
 
 Entity::Entity(){
+	// set entity id not next avaliable one
 	this->_id = next_id;
 	next_id++;
+	
+	// DEBUG
 	std::cout<<"entity created\n";
 }
 

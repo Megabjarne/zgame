@@ -36,6 +36,7 @@ string Room::describe(){
 }
 
 string Room::describe_detailed(){
+	// exits
 	list<Link*> exitlist = this->exits();
 	string s = "a room with " + std::to_string(exitlist.size()) + " exits; ";
 	unsigned int n = 0;
@@ -50,6 +51,24 @@ string Room::describe_detailed(){
 		}
 		s += string((*e)->stype()) + " leading " + (*e)->direction(this->id());
 	}
+	s += ". ";
+	// furniture
+	n = 0;
+	for (auto f = this->furniture.begin(); f != this->furniture.end(); f++){
+		n++;
+		if (n == 1)
+			s += "The room has ";
+		if (n == this->furniture.size() && this->furniture.size() != 1){
+			s += " and a ";
+		} else {
+			if (n != 1)
+				s += ", ";
+			s += "a ";
+		}
+		s += (*f)->display_name();
+	}
+	if (n != 0)
+		s += " in it.";
 	return s;
 }
 

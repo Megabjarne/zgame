@@ -2,6 +2,7 @@
 #define _entity_h
 
 #include <string>
+#include <tagset.h>
 
 typedef unsigned int entity_id;
 
@@ -14,6 +15,7 @@ private:
 	Room* _room;
 
 public:
+	Tagset tags = Tagset(tagtype::ENTITY);
 	Entity();
 	entity_id id();
 	Room* room();

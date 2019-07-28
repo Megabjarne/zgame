@@ -5,6 +5,7 @@
 #include <string>
 
 class Room;
+class Furniture;
 typedef unsigned int room_id;
 #include <link.h>
 #include <game.h>
@@ -15,6 +16,8 @@ private:
 	room_id _id;
 	Pos _pos;
 public:
+	std::list<Furniture*> furniture;
+	
 	Room();
 	Room(Pos npos);
 	room_id id();
